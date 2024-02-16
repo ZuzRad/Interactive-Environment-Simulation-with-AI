@@ -19,6 +19,14 @@ void ABall::BeginPlay()
 	Super::BeginPlay();
 }
 
+bool ABall::CheckGround()
+{
+	TArray<AActor*> OverlappingActors;
+	MainPart->GetOverlappingActors(OverlappingActors);
+
+	return OverlappingActors.Num() > 0;
+}
+
 void ABall::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

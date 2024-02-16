@@ -7,6 +7,7 @@
 #include "InteractiveObject.h"
 #include "Ball.generated.h"
 
+
 UCLASS()
 class ZADANIEREKRUTACYJNE_API ABall : public AInteractiveObject
 {
@@ -24,5 +25,4 @@ protected:
 
 private:
 	float ImpulsePower = 8000.f;
-
 };
