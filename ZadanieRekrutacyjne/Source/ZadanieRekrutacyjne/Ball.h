@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 #include "InteractiveObject.h"
 #include "Ball.generated.h"
 
@@ -25,4 +27,8 @@ protected:
 
 private:
 	float ImpulsePower = 8000.f;
+	bool IsInCollision();
+
+	UPROPERTY(EditAnywhere, Category = "Effect")
+	UNiagaraComponent* Trajectory;
 };

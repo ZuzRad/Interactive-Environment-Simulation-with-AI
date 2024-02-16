@@ -193,7 +193,7 @@ AInteractiveObject* AMainCharacter::FindInteractiveObject() const
 
 		GetWorld()->LineTraceSingleByChannel(HitResult, PlayerLocation, Point, ECollisionChannel::ECC_Visibility);
 
-		DrawDebugLine(GetWorld(), PlayerLocation, HitResult.ImpactPoint, FColor::Green, false, 0.1f, 0, 5);
+		//DrawDebugLine(GetWorld(), PlayerLocation, HitResult.ImpactPoint, FColor::Green, false, 0.1f, 0, 5);
 
 		AInteractiveObject* Object = Cast<AInteractiveObject>(HitResult.GetActor());
 		if (Object)
