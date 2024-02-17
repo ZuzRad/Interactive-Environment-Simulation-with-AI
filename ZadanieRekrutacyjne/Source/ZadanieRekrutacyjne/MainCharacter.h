@@ -21,6 +21,8 @@ public:
 	void MoveForward(float value);
 	void MoveSideways(float value);
 
+	AInteractiveObject* LastObject;
+
 
 protected:
 	virtual void BeginPlay() override;
@@ -32,7 +34,6 @@ protected:
 	// Camera component
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 	UCameraComponent* Camera;
-
 
 private:
 
@@ -47,6 +48,4 @@ private:
 	float LookUpRate = 45.f;
 
 	void ShowInteractiveText();
-
-	AInteractiveObject* LastObject;
 };

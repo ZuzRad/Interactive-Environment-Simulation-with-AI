@@ -12,11 +12,9 @@ EBTNodeResult::Type UBTTask_GetTarget::ExecuteTask(UBehaviorTreeComponent& Owner
 {
     Super::ExecuteTask(OwnerComp, NodeMemory);
 
-    // Pobierz wszystkich graczy typu MainCharacter w grze
-    TArray<AActor*> FoundPlayers;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMainCharacter::StaticClass(), FoundPlayers);
+    TArray<AActor*> FoundActors;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMainCharacter::StaticClass(), FoundActors);
 
-    // Pobierz pozycjê AI
     AAIControllerBase* AIController = Cast<AAIControllerBase>(OwnerComp.GetAIOwner());
     if (!AIController)
     {
@@ -25,18 +23,14 @@ EBTNodeResult::Type UBTTask_GetTarget::ExecuteTask(UBehaviorTreeComponent& Owner
 
     FVector AIPosition = AIController->GetPawn()->GetActorLocation();
 
-    // ZnajdŸ najbli¿szego gracza
-    AActor* ClosestPlayer = FindClosestActor(FoundPlayers, AIPosition);
+    AActor* ClosestActor = FindClosestActor(FoundActors, AIPosition);
 
-    if (!ClosestPlayer)
+    if (!ClosestActor)
     {
         return EBTNodeResult::Failed;
     }
 
-
-
-    // Zapisz najbli¿szego gracza w czarnej desce
-    OwnerComp.GetBlackboardComponent()->SetValueAsObject(GetSelectedBlackboardKey(), ClosestPlayer);
+    OwnerComp.GetBlackboardComponent()->SetValueAsObject(GetSelectedBlackboardKey(), ClosestActor);
 
     FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 
@@ -47,8 +41,6 @@ AActor* UBTTask_GetTarget::FindClosestActor(const TArray<AActor*>& Actors, const
 {
     AActor* ClosestActor = nullptr;
     float ClosestDistanceSquared = MAX_FLT;
-    AActor* SecondClosestActor = nullptr;
-    float SecondClosestDistanceSquared = MAX_FLT;
 
     for (AActor* Actor : Actors)
     {
@@ -57,29 +49,13 @@ AActor* UBTTask_GetTarget::FindClosestActor(const TArray<AActor*>& Actors, const
             float DistanceSquared = FVector::DistSquared(Actor->GetActorLocation(), ReferencePosition);
             if (DistanceSquared < ClosestDistanceSquared)
             {
-                SecondClosestActor = ClosestActor;
-                SecondClosestDistanceSquared = ClosestDistanceSquared;
                 ClosestActor = Actor;
                 ClosestDistanceSquared = DistanceSquared;
-            }
-            else if (DistanceSquared < SecondClosestDistanceSquared)
-            {
-                SecondClosestActor = Actor;
-                SecondClosestDistanceSquared = DistanceSquared;
             }
         }
     }
 
-    if (ClosestActor == SecondClosestActor)
-    {
-        // Jeœli najbli¿szy aktor to ten sam aktor, zwróæ drugi najbli¿szy
-        return SecondClosestActor;
-    }
-    else
-    {
-        // W przeciwnym razie zwróæ najbli¿szy aktor
-        return ClosestActor;
-    }
+    return ClosestActor;
 }
 
 

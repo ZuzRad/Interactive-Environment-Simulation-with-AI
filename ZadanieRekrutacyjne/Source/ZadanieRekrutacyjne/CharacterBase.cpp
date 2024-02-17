@@ -79,6 +79,8 @@ void ACharacterBase::ThrowBall()
 {
 	if (bIsBallInHand)
 	{
+		bIsThrowing = true;
+		UE_LOG(LogTemp, Warning, TEXT("Throw %d"), bIsThrowing);
 		CollectedBall->Throw(GetActorForwardVector());
 		RemoveBall();
 	}
@@ -86,6 +88,7 @@ void ACharacterBase::ThrowBall()
 
 void ACharacterBase::AddBall(ABall* Ball)
 {
+	bIsThrowing = false;
 	bIsBallInHand = true;
 	CollectedBall = Ball;
 }
@@ -94,7 +97,6 @@ void ACharacterBase::RemoveBall()
 {
 	bIsBallInHand = false;
 	CollectedBall = nullptr;
-	UE_LOG(LogTemp, Warning, TEXT("balls %d"), bIsBallInHand);
 }
 
 void ACharacterBase::Tick(float DeltaTime)

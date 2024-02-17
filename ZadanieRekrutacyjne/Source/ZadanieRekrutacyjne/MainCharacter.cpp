@@ -65,7 +65,7 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 	PlayerInputComponent->BindAction("Interact", IE_Pressed, this, &ACharacterBase::Interact);
 
 	// Assign throw action
-	PlayerInputComponent->BindAction("Throw", IE_Pressed, this, &AMainCharacter::ThrowBall);
+	PlayerInputComponent->BindAction("Throw", IE_Pressed, this, &ACharacterBase::ThrowBall);
 }
 
 

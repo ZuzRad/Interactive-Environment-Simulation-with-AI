@@ -37,4 +37,5 @@ public:
 
 	uint8 TargetKeyId;
 	uint8 LocationKeyId;
+	uint8 BallKeyId;
 };

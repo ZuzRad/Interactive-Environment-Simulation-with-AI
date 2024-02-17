@@ -25,30 +25,30 @@ class ZADANIEREKRUTACYJNE_API ACharacterBase : public ACharacter
 public:
 	ACharacterBase();
 
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 	void Interact();
+
+	bool bIsThrowing = false;
+
+	ABall* CollectedBall;
+
+	void ThrowBall();
+
+	void AddBall(ABall* Ball);
+	void RemoveBall();
 
 protected:
 	virtual void BeginPlay() override;
 
 	float InteractionRange = 300.f;
 
-	void ThrowBall();
-
 	bool bIsBallInHand;
-	ABall* CollectedBall;
-
-	void AddBall(ABall* Ball);
-	void RemoveBall();
 
 	USkeletalMeshComponent* PlayerMesh;
 	FName HandSocketName;
 
 	AInteractiveObject* FindInteractiveObject() const;
-
-public:	
-
-	virtual void Tick(float DeltaTime) override;
-
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };

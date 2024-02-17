@@ -36,6 +36,7 @@ void AAIControllerBase::OnPossess(APawn* const InPawn)
 
 		TargetKeyId = BBC->GetKeyID("TargetActor");
 		LocationKeyId = BBC->GetKeyID("MoveToLocation");
+		BallKeyId = BBC->GetKeyID("BallActor");
 
 		BTC->StartTree(*character->AITree);
 	}
