@@ -13,9 +13,5 @@ UCLASS(Blueprintable)
 class ZADANIEREKRUTACYJNE_API UBTTask_MoveToActor : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
-	
-public:
-	UBTTask_MoveToActor();
 
-	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

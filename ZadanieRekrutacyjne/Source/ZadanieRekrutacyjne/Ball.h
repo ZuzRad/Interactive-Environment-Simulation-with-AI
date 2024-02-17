@@ -27,7 +27,6 @@ protected:
 
 private:
 	float ImpulsePower = 8000.f;
-	bool IsInCollision();
 
 	UPROPERTY(EditAnywhere, Category = "Effect")
 	UNiagaraComponent* Trajectory;

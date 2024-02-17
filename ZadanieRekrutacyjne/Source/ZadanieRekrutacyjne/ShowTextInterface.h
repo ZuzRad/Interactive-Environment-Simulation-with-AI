@@ -6,7 +6,6 @@
 #include "UObject/Interface.h"
 #include "ShowTextInterface.generated.h"
 
-// This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UShowTextInterface : public UInterface
 {
@@ -20,7 +19,6 @@ class ZADANIEREKRUTACYJNE_API IShowTextInterface
 {
 	GENERATED_BODY()
 
-	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual void SetText(bool isVisible, const FVector& PlayerLocation) = 0;
 };

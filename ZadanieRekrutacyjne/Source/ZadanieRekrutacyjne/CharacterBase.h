@@ -29,8 +29,6 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void Interact();
-
 	bool bIsThrowing = false;
 
 	ABall* CollectedBall;
@@ -49,6 +47,4 @@ protected:
 
 	USkeletalMeshComponent* PlayerMesh;
 	FName HandSocketName;
-
-	AInteractiveObject* FindInteractiveObject() const;
 };

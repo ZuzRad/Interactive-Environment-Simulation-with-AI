@@ -29,25 +29,6 @@ EBTNodeResult::Type UBTTask_WaitToThrow::ExecuteTask(UBehaviorTreeComponent& Own
     return EBTNodeResult::Succeeded;
 }
 
-//void UBTTask_WaitToThrow::TickTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
-//{
-//    Super::TickTask(OwnerComp, NodeMemory, DeltaSeconds);
-//
-//    AMainCharacter* MainCharacter = Cast<AMainCharacter>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(GetSelectedBlackboardKey()));
-//    if (!MainCharacter)
-//    {
-//        FinishLatentTask(OwnerComp, EBTNodeResult::Failed);
-//        return;
-//    }
-//
-//    if (MainCharacter->bIsThrowing)
-//    {
-//        OwnerComp.GetBlackboardComponent()->SetValueAsObject(GetSelectedBlackboardKey(), MainCharacter->CollectedBall);
-//        FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
-//        return;
-//    }
-//}
-//
 void UBTTask_WaitToThrow::OnTaskFinished(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, EBTNodeResult::Type TaskResult)
 {
     Super::OnTaskFinished(OwnerComp, NodeMemory, TaskResult);
