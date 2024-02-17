@@ -3,19 +3,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 
-#include "ShowTextInterface.h"
-#include "GameFramework/CharacterMovementComponent.h"
-#include "Camera/CameraComponent.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "Chest.h"
 
-#include <DrawDebugHelpers.h>
-#include <Kismet/GameplayStatics.h>
 
+#include "CharacterBase.h"
 #include "MainCharacter.generated.h"
 
 UCLASS()
-class ZADANIEREKRUTACYJNE_API AMainCharacter : public ACharacter
+class ZADANIEREKRUTACYJNE_API AMainCharacter : public ACharacterBase
 {
 	GENERATED_BODY()
 
@@ -52,27 +46,7 @@ private:
 	float TurnRate = 45.f;
 	float LookUpRate = 45.f;
 
-	// Function to interact with objects
-	void Interact();
-
 	void ShowInteractiveText();
 
-	float InteractionRange = 300.f;
-
-
-	//TArray<AInteractiveObject*> ObjectsToInteract;
 	AInteractiveObject* LastObject;
-	AInteractiveObject* FindInteractiveObject() const;
-
-	bool bIsBallInHand;
-	ABall* CollectedBall;
-
-	void AddBall(ABall* Ball);
-	void RemoveBall();
-
-	USkeletalMeshComponent* PlayerMesh;
-	FName HandSocketName;
-
-	void ThrowBall();
-	
 };
