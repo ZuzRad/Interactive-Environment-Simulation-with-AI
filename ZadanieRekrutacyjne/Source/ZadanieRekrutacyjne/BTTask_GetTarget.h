@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(Blueprintable)
 class ZADANIEREKRUTACYJNE_API UBTTask_GetTarget : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()

@@ -14,7 +14,7 @@ EBTNodeResult::Type UBTTask_GetTarget::ExecuteTask(UBehaviorTreeComponent& Owner
 
     // Pobierz wszystkich graczy typu MainCharacter w grze
     TArray<AActor*> FoundPlayers;
-    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ABall::StaticClass(), FoundPlayers);
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AMainCharacter::StaticClass(), FoundPlayers);
 
     // Pobierz pozycjê AI
     AAIControllerBase* AIController = Cast<AAIControllerBase>(OwnerComp.GetAIOwner());
@@ -33,8 +33,12 @@ EBTNodeResult::Type UBTTask_GetTarget::ExecuteTask(UBehaviorTreeComponent& Owner
         return EBTNodeResult::Failed;
     }
 
+
+
     // Zapisz najbli¿szego gracza w czarnej desce
     OwnerComp.GetBlackboardComponent()->SetValueAsObject(GetSelectedBlackboardKey(), ClosestPlayer);
+
+    FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 
     return EBTNodeResult::Succeeded;
 }

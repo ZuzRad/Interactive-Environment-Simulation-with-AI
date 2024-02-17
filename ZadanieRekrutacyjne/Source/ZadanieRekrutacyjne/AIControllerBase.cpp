@@ -2,6 +2,7 @@
 
 
 #include "AIControllerBase.h"
+#include "AICharacter.h"
 
 void AAIControllerBase::BeginPlay()
 {
@@ -24,17 +25,17 @@ AAIControllerBase::AAIControllerBase(const FObjectInitializer& ObjectInitializer
 	BBC = CreateDefaultSubobject<UBlackboardComponent>(TEXT("Blackboard"));
 }
 
-void AAIControllerBase::OnPossess(APawn* InPawn)
+void AAIControllerBase::OnPossess(APawn* const InPawn)
 {
 	Super::OnPossess(InPawn);
 
-	AMainCharacter* character = Cast< AMainCharacter>(InPawn);
+	AAICharacter* character = Cast< AAICharacter>(InPawn);
 	if (character && character->AITree) 
 	{
 		BBC->InitializeBlackboard(*character->AITree->BlackboardAsset);
 
 		TargetKeyId = BBC->GetKeyID("TargetActor");
-		TargetKeyId = BBC->GetKeyID("MoveToLocation");
+		LocationKeyId = BBC->GetKeyID("MoveToLocation");
 
 		BTC->StartTree(*character->AITree);
 	}

@@ -23,9 +23,9 @@ protected:
 	
 public:
 
-	AAIControllerBase(const FObjectInitializer& ObjectInitializer);
+	AAIControllerBase(FObjectInitializer const& ObjectInitializer = FObjectInitializer::Get());
 
-	virtual void OnPossess(APawn* InPawn) override;
+	virtual void OnPossess(APawn* const InPawn) override;
 
 	class AMainCharacter* Agent;
 
