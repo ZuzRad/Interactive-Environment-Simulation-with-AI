@@ -15,5 +15,7 @@ class ZADANIEREKRUTACYJNE_API UBTTask_PickBall : public UBTTask_BlackboardBase
 	GENERATED_BODY()
 	
 public:
+	UBTTask_PickBall();
+
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

@@ -80,7 +80,6 @@ void ACharacterBase::ThrowBall()
 	if (bIsBallInHand)
 	{
 		bIsThrowing = true;
-		UE_LOG(LogTemp, Warning, TEXT("Throw %d"), bIsThrowing);
 		CollectedBall->Throw(GetActorForwardVector());
 		RemoveBall();
 	}

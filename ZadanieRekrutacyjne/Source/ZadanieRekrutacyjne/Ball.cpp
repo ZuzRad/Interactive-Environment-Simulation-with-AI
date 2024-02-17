@@ -25,15 +25,13 @@ void ABall::BeginPlay()
 
 bool ABall::IsInCollision()
 {
-	FVector StartLocation = MainPart->GetComponentLocation(); // Pobierz pozycjê pi³ki
-	FVector EndLocation = StartLocation - FVector(0.f, 0.f, 100.f); // Przesuniêcie o wartoœæ TraceDistance (100.f w przyk³adzie)
+	FVector StartLocation = MainPart->GetComponentLocation();
+	FVector EndLocation = StartLocation - FVector(0.f, 0.f, 100.f);
 	FHitResult HitResult;
 
-	// Ustawienia trace
 	FCollisionQueryParams TraceParams(FName(TEXT("Trace")), true, this);
 	TraceParams.bTraceComplex = true;
 
-	// Wykonanie trace
 	bool bHit = GetWorld()->LineTraceSingleByObjectType(
 		HitResult,
 		StartLocation,
@@ -59,7 +57,6 @@ bool ABall::IsInCollision()
 void ABall::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//Trajectory->SetPaused(IsInCollision());
 }
 
 void ABall::Throw(FVector ImpulseDirection)
@@ -70,10 +67,3 @@ void ABall::Throw(FVector ImpulseDirection)
 	MainPart->AddImpulse(ImpulseDirection * ImpulsePower);
 	Trajectory->SetPaused(false);
 }
-//
-//TArray<AActor*> OverlappingActors;
-//MainPart->GetOverlappingActors(OverlappingActors);
-//
-//UE_LOG(LogTemp, Warning, TEXT("Actors %d"), OverlappingActors.Num());
-//
-//return OverlappingActors.Num() == 0;

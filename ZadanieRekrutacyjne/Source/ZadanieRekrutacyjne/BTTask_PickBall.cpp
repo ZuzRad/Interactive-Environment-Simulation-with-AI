@@ -7,6 +7,11 @@
 #include "Ball.h"
 #include "CharacterBase.h"
 
+UBTTask_PickBall::UBTTask_PickBall()
+{
+    NodeName = TEXT("PickBall");
+}
+
 
 EBTNodeResult::Type UBTTask_PickBall::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
