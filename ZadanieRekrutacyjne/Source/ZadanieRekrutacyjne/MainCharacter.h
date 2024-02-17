@@ -27,6 +27,9 @@ public:
 	void MoveForward(float value);
 	void MoveSideways(float value);
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI")
+	class UBehaviorTree* AITree;
+
 protected:
 	virtual void BeginPlay() override;
 
